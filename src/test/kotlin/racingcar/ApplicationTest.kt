@@ -26,6 +26,13 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `자동차 이름 길이 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { CarName("pobi,joon,kotlincar") }
+        }
+    }
+
     public override fun runMain() {
         main()
     }
