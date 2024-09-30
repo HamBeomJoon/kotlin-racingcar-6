@@ -23,6 +23,7 @@ class RacingCarController {
 
         racing(carList, raceCount)
 
+        outputWinner()
     }
 
     private fun inputCarName(): List<String> {
@@ -48,6 +49,16 @@ class RacingCarController {
         Race(carList, raceCount)
     }
 
+    private fun outputWinner() {
+        var winnerList = mutableListOf<String>()
+        val maxCount = carList.maxOf { it.goCount }
+        carList.map {
+            if (it.goCount == maxCount) {
+                winnerList.add(it.carName)
+            }
+        }
+
+        outputView.printOutputWinner(winnerList)
     }
 
     private fun isNumber(raceCount: String) = raceCount.matches(NUMBER_REGEX.toRegex())
