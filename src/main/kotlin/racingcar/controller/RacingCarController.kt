@@ -11,6 +11,10 @@ class RacingCarController {
 
     fun start() {
         inputCarName()
+
+        inputRaceCount()
+        println()
+
     }
 
     private fun inputCarName() {
@@ -18,6 +22,11 @@ class RacingCarController {
 
         val carName = Console.readLine()
         CarName(carName)
+    }
+
+    private fun inputRaceCount() {
+        inputView.printInputRaceCount()
+
     }
     }
 }
