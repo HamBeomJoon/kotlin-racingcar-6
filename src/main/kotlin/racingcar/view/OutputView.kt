@@ -10,4 +10,7 @@ class OutputView {
         println()
     }
 
+    fun printOutputWinner(carInfoList: MutableList<CarInfo>) {
+        TODO("최종 우승자 출력")
+    }
 }
