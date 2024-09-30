@@ -55,6 +55,25 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { RacingCarController().isCountOverZero("0") }
         }
     }
+
+    @Test
+    fun `우승자 반환 기능 검증`() {
+        // Given
+        val carList = mutableListOf<CarInfo>()
+        carList.add(CarInfo("hello", 6))
+        carList.add(CarInfo("world", 6))
+        carList.add(CarInfo("joon", 4))
+
+        // When
+        val winnerList = RacingCarController().outputWinner(carList)
+
+        // Then
+        val result = listOf("hello", "world").joinToString(", ")
+        println(result)
+        println(winnerList)
+        assertEquals("최종 우승자 : $result", winnerList)
+    }
+
     public override fun runMain() {
         main()
     }

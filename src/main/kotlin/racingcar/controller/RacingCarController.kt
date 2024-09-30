@@ -23,7 +23,7 @@ class RacingCarController {
 
         racing(carList, raceCount)
 
-        outputWinner()
+        outputView.printOutputWinner(outputWinner(carList))
     }
 
     private fun inputCarName(): List<String> {
@@ -40,6 +40,7 @@ class RacingCarController {
 
         val raceCount = Console.readLine()
         isCountNumber(raceCount)
+        isCountOverZero(raceCount)
 
         return raceCount.toInt()
     }
@@ -48,8 +49,8 @@ class RacingCarController {
         Race(carList, raceCount)
     }
 
-    private fun outputWinner() {
-        var winnerList = mutableListOf<String>()
+    fun outputWinner(carList: MutableList<CarInfo>): String {
+        val winnerList = mutableListOf<String>()
         val maxCount = carList.maxOf { it.goCount }
         carList.map {
             if (it.goCount == maxCount) {
@@ -57,7 +58,7 @@ class RacingCarController {
             }
         }
 
-        outputView.printOutputWinner(winnerList)
+        return "최종 우승자 : ${winnerList.joinToString(", ")}"
     }
 
     fun isCountNumber(raceCount: String) {

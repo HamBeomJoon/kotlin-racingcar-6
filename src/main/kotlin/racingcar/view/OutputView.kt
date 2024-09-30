@@ -10,7 +10,7 @@ class OutputView {
         println()
     }
 
-    fun printOutputWinner(winnerList: MutableList<String>) {
-        println("최종 우승자 : ${winnerList.joinToString(", ")}")
+    fun printOutputWinner(winnerList: String) {
+        println(winnerList)
     }
 }
