@@ -3,11 +3,14 @@ package racingcar.controller
 import racingcar.view.InputView
 import racingcar.view.OutputView
 import camp.nextstep.edu.missionutils.Console
+import racingcar.model.CarInfo
 import racingcar.model.CarName
+import racingcar.model.Race
 
 class RacingCarController {
-    val inputView = InputView()
-    val outputView = OutputView()
+    private val inputView = InputView()
+    private val outputView = OutputView()
+    private var raceCount = 0
 
     fun start() {
         inputCarName()
@@ -34,8 +37,12 @@ class RacingCarController {
 
     private fun outputRaceResult() {
         outputView.printOutputRaceResult()
+    private fun racing(carList: MutableList<CarInfo>, raceCount: Int) {
+        Race(carList, raceCount)
+    }
 
     }
+
     private fun isNumber(raceCount: String) = raceCount.matches(NUMBER_REGEX.toRegex())
     private fun isOverZero(raceCount: String) = raceCount.toInt() > 0
 
