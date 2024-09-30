@@ -13,3 +13,8 @@
 [x] 우승자 출력 (출력 형식 체크)
 
 [x] test 코드 작성
+
+---
+빌드 결과
+<img width="914" alt="스크린샷 2024-09-30 오후 2 13 45" src="https://github.com/user-attachments/assets/d8dbdbd7-2f67-4a40-8ea1-ce1800af7fc7">
+
