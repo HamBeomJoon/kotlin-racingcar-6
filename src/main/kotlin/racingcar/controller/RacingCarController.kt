@@ -17,4 +17,7 @@ class RacingCarController {
         inputView.printInputCarName()
 
         val carName = Console.readLine()
+        CarName(carName)
     }
+    }
+}
