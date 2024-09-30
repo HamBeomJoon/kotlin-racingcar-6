@@ -39,8 +39,6 @@ class RacingCarController {
         inputView.printInputRaceCount()
 
         val raceCount = Console.readLine()
-        require(isNumber(raceCount)) { RACE_COUNT_NOT_INT }
-        require(isOverZero(raceCount)) { RACE_COUNT_OVER_ZERO }
         isCountNumber(raceCount)
 
         return raceCount.toInt()
@@ -62,10 +60,15 @@ class RacingCarController {
         outputView.printOutputWinner(winnerList)
     }
 
-    private fun isOverZero(raceCount: String) = raceCount.toInt() > 0
     fun isCountNumber(raceCount: String) {
         if (!raceCount.matches(NUMBER_REGEX.toRegex())) {
             throw IllegalArgumentException(RACE_COUNT_NOT_INT)
+        }
+    }
+
+    fun isCountOverZero(raceCount: String) {
+        if (raceCount.toInt() < 1) {
+            throw IllegalArgumentException(RACE_COUNT_OVER_ZERO)
         }
     }
 

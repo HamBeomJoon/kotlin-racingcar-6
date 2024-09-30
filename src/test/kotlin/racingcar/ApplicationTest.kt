@@ -4,8 +4,13 @@ import camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeT
 import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertDoesNotThrow
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import racingcar.controller.RacingCarController
+import racingcar.model.CarInfo
+import racingcar.model.CarName
 
 class ApplicationTest : NsTest() {
     @Test
@@ -40,6 +45,14 @@ class ApplicationTest : NsTest() {
             assertThrows<IllegalArgumentException> { RacingCarController().isCountNumber("1_@") }
 
             assertDoesNotThrow { RacingCarController().isCountNumber("10") }
+        }
+    }
+
+    @Test
+    fun `레이싱 횟수 유효 범위 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { RacingCarController().isCountOverZero("-1") }
+            assertThrows<IllegalArgumentException> { RacingCarController().isCountOverZero("0") }
         }
     }
     public override fun runMain() {
