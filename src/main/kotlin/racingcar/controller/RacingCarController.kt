@@ -10,33 +10,40 @@ import racingcar.model.Race
 class RacingCarController {
     private val inputView = InputView()
     private val outputView = OutputView()
+
+    private var carList = mutableListOf<CarInfo>()
     private var raceCount = 0
 
     fun start() {
-        inputCarName()
+        val carName = inputCarName()
+        carName.map { carList.add(CarInfo(it, 0)) }
 
-        inputRaceCount()
+        raceCount = inputRaceCount()
         println()
+
+        racing(carList, raceCount)
 
     }
 
-    private fun inputCarName() {
+    private fun inputCarName(): List<String> {
         inputView.printInputCarName()
 
         val carName = Console.readLine()
-        CarName(carName)
+        val carList = CarName(carName).getCarList()
+
+        return carList
     }
 
-    private fun inputRaceCount() {
+    private fun inputRaceCount(): Int {
         inputView.printInputRaceCount()
 
         val raceCount = Console.readLine()
         require(isNumber(raceCount)) { RACE_COUNT_NOT_INT }
         require(isOverZero(raceCount)) { RACE_COUNT_OVER_ZERO }
+
+        return raceCount.toInt()
     }
 
-    private fun outputRaceResult() {
-        outputView.printOutputRaceResult()
     private fun racing(carList: MutableList<CarInfo>, raceCount: Int) {
         Race(carList, raceCount)
     }
