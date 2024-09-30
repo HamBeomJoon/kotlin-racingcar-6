@@ -33,6 +33,15 @@ class ApplicationTest : NsTest() {
         }
     }
 
+    @Test
+    fun `레이싱 횟수 정수 검증`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { RacingCarController().isCountNumber("a") }
+            assertThrows<IllegalArgumentException> { RacingCarController().isCountNumber("1_@") }
+
+            assertDoesNotThrow { RacingCarController().isCountNumber("10") }
+        }
+    }
     public override fun runMain() {
         main()
     }
